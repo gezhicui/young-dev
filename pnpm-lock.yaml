@@ -1,0 +1,34 @@
+lockfileVersion: 5.4
+
+importers:
+
+  .:
+    specifiers:
+      typescript: ^4.9.3
+    devDependencies:
+      typescript: 4.9.3
+
+  examples/app:
+    specifiers:
+      malita: ^0.0.2
+    dependencies:
+      malita: link:../../packages/malita
+
+  packages/malita:
+    specifiers:
+      commander: ^9.1.0
+    dependencies:
+      commander: 9.4.1
+
+packages:
+
+  /commander/9.4.1:
+    resolution: {integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==}
+    engines: {node: ^12.20.0 || >=14}
+    dev: false
+
+  /typescript/4.9.3:
+    resolution: {integrity: sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
