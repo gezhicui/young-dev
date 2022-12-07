@@ -6,22 +6,14 @@
     "malita": "bin/malita.js"
   },
   "scripts": {
-    "build": "pnpm esbuild src/** --bundle --outdir=lib",
-    "dev": "pnpm build -- --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xiaohuoni/malita.git"
+    "build": "pnpm esbuild src/** --bundle --outdir=lib --platform=node --external:esbuild",
+    "dev": "pnpm build --watch"
   },
   "keywords": [],
-  "author": "xiaohuoni",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/xiaohuoni/malita/issues"
-  },
-  "homepage": "https://github.com/xiaohuoni/malita#readme",
   "dependencies": {
-    "commander": "^9.1.0"
+    "commander": "^9.1.0",
+    "express": "^4.18.2"
   },
   "description": ""
 }

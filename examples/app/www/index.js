@@ -22875,12 +22875,10 @@
       "span",
       {
         onClick: () => {
-          setText("Hi youngyux!");
+          setText("Hi youngyuxasda!");
         }
       },
-      " ",
-      text,
-      " "
+      text
     );
   };
   var root = import_react_dom.default.createRoot(document.getElementById("malita"));
