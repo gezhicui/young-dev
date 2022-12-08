@@ -1,4 +1,3 @@
-"use strict";
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -22866,22 +22865,53 @@
     }
   });
 
+  // ../../node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js
+  var require_client = __commonJS({
+    "../../node_modules/.pnpm/react-dom@18.2.0_react@18.2.0/node_modules/react-dom/client.js"(exports) {
+      "use strict";
+      var m = require_react_dom();
+      if (false) {
+        exports.createRoot = m.createRoot;
+        exports.hydrateRoot = m.hydrateRoot;
+      } else {
+        i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+        exports.createRoot = function(c, o) {
+          i.usingClientEntryPoint = true;
+          try {
+            return m.createRoot(c, o);
+          } finally {
+            i.usingClientEntryPoint = false;
+          }
+        };
+        exports.hydrateRoot = function(c, h, o) {
+          i.usingClientEntryPoint = true;
+          try {
+            return m.hydrateRoot(c, h, o);
+          } finally {
+            i.usingClientEntryPoint = false;
+          }
+        };
+      }
+      var i;
+    }
+  });
+
   // src/index.tsx
   var import_react = __toESM(require_react());
-  var import_react_dom = __toESM(require_react_dom());
+  var import_client = __toESM(require_client());
   var Hello = () => {
-    const [text, setText] = import_react.default.useState("Hello Malita!");
+    const [text, setText] = import_react.default.useState("Hello \u8428\u8FBE\u53D1\u987A\u4E30\u4E09!");
     return /* @__PURE__ */ import_react.default.createElement(
       "span",
       {
         onClick: () => {
-          setText("Hi youngyuxasda!");
+          setText(`\u73B0\u5728\u7684\u65F6\u95F4\u662F${String(new Date())}`);
         }
       },
       text
     );
   };
-  var root = import_react_dom.default.createRoot(document.getElementById("malita"));
+  var root = import_client.default.createRoot(document.getElementById("malita"));
   root.render(import_react.default.createElement(Hello));
 })();
 /**

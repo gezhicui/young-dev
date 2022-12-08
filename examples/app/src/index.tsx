@@ -1,12 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 const Hello = () => {
-  const [text, setText] = React.useState('Hello Malita!');
+  const [text, setText] = React.useState('Hello 萨达发顺丰三!');
   return (
     <span
       onClick={() => {
-        setText('Hi youngyuxasda!');
+        setText(`现在的时间是${String(new Date())}`);
       }}
     >
       {text}
