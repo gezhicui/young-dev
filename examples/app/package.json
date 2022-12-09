@@ -11,7 +11,7 @@
   "keywords": [],
   "author": "",
   "dependencies": {
-    "@malita/keepalive": "workspace:*",
+    "@young-design/keepalive": "workspace:*",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "malita": "workspace:*",

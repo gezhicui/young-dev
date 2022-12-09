@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import KeepAliveLayout, { useKeepOutlets, KeepAliveContext } from '@malita/keepalive';
+import KeepAliveLayout, { useKeepOutlets, KeepAliveContext } from '@young-design/keepalive';
 
 const Layout = () => {
   const { pathname } = useLocation();

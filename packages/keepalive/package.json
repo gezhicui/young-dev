@@ -1,6 +1,6 @@
 {
-  "name": "@malita/keepalive",
-  "version": "0.0.1",
+  "name": "@young-design/keepalive",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "types": "lib.index.d.ts",
   "scripts": {
