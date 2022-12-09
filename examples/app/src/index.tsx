@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 const Hello = () => {
-  const [text, setText] = React.useState('Hello 萨达发顺丰三!');
+  const [text, setText] = React.useState('Hello 啊发发!');
   return (
     <span
       onClick={() => {
-        setText(`现在的时间是${String(new Date())}`);
+        setText(`现在的时间是${String(new Date())}gg`);
       }}
     >
       {text}

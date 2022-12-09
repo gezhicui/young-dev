@@ -22900,12 +22900,12 @@
   var import_react = __toESM(require_react());
   var import_client = __toESM(require_client());
   var Hello = () => {
-    const [text, setText] = import_react.default.useState("Hello \u8428\u8FBE\u53D1\u987A\u4E30\u4E09!");
+    const [text, setText] = import_react.default.useState("Hello \u554A\u53D1\u53D1!");
     return /* @__PURE__ */ import_react.default.createElement(
       "span",
       {
         onClick: () => {
-          setText(`\u73B0\u5728\u7684\u65F6\u95F4\u662F${String(new Date())}`);
+          setText(`\u73B0\u5728\u7684\u65F6\u95F4\u662F${String(new Date())}gg`);
         }
       },
       text

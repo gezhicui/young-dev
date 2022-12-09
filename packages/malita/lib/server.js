@@ -2900,6 +2900,7 @@ function createWebSocketServer(server) {
     noServer: true
   });
   server.on("upgrade", (req, socket, head) => {
+    console.log("upgrade\u89E6\u53D1");
     if (req.headers["sec-websocket-protocol"] === "malita-hmr") {
       wss.handleUpgrade(req, socket, head, (ws) => {
         wss.emit("connection", ws, req);
@@ -2907,7 +2908,11 @@ function createWebSocketServer(server) {
     }
   });
   wss.on("connection", (socket) => {
+    console.log("wss.on connection");
     socket.send(JSON.stringify({ type: "connected" }));
+    socket.on("message", (data) => {
+      console.log("\u63A5\u6536\u5FC3\u8DF3:", data.toString());
+    });
   });
   wss.on("error", (e) => {
     if (e.code !== "EADDRINUSE") {

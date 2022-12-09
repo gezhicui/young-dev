@@ -6,9 +6,10 @@
     "malita": "bin/malita.js"
   },
   "scripts": {
-    "build": "pnpm esbuild ./src/** --bundle --outdir=lib --platform=node --external:esbuild",
+    "build": "pnpm build:env && pnpm build:client",
+    "build:env": "pnpm esbuild ./src/** --bundle --outdir=lib --platform=node --external:esbuild",
     "build:client": "pnpm esbuild ./client/** --outdir=lib/client --bundle --external:esbuild",
-    "dev": "pnpm build -- --watch"
+    "dev": "pnpm build --watch"
   },
   "keywords": [],
   "license": "ISC",

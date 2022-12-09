@@ -7,6 +7,7 @@ export function createWebSocketServer(server: HttpServer) {
   });
 
   server.on('upgrade', (req, socket, head) => {
+    console.log('upgrade触发');
     if (req.headers['sec-websocket-protocol'] === 'malita-hmr') {
       wss.handleUpgrade(req, socket as any, head, ws => {
         wss.emit('connection', ws, req);
@@ -15,7 +16,11 @@ export function createWebSocketServer(server: HttpServer) {
   });
 
   wss.on('connection', socket => {
+    console.log('wss.on connection');
     socket.send(JSON.stringify({ type: 'connected' }));
+    socket.on('message', data => {
+      console.log('接收心跳:', data.toString());
+    });
   });
 
   wss.on('error', (e: Error & { code: string }) => {

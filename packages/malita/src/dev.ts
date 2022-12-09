@@ -16,12 +16,12 @@ import { createWebSocketServer } from './server';
 export const dev = async () => {
   const cwd = process.cwd();
   const app = express();
+  // 查找空闲端口
   const port = await portfinder.getPortPromise({
     port: DEFAULT_PORT,
   });
 
   const esbuildOutput = path.resolve(cwd, DEFAULT_OUTDIR);
-
   app.get('/', (_req, res) => {
     res.set('Content-Type', 'text/html');
     res.send(`<!DOCTYPE html>
@@ -42,8 +42,12 @@ export const dev = async () => {
         </html>`);
   });
 
+  // 设置静态文件目录
   app.use(`/${DEFAULT_OUTDIR}`, express.static(esbuildOutput));
   app.use(`/malita`, express.static(path.resolve(__dirname, 'client')));
+
+  console.log('主文件目录:', esbuildOutput);
+  console.log('客户端ws目录:', path.resolve(__dirname, 'client'));
 
   const malitaServe = createServer(app);
   const ws = createWebSocketServer(malitaServe);
@@ -67,6 +71,7 @@ export const dev = async () => {
               console.error(JSON.stringify(err));
               return;
             }
+            console.log('file rebuild');
             sendMessage('reload');
           },
         },
@@ -76,8 +81,6 @@ export const dev = async () => {
         external: ['esbuild'],
         entryPoints: [path.resolve(cwd, DEFAULT_ENTRY_POINT)],
       });
-      // [Issues](https://github.com/evanw/esbuild/issues/805)
-      // 查了很多资料，esbuild serve 不能响应 onRebuild， esbuild build 和 express 组合不能不写入文件
     } catch (e) {
       console.log(e);
       process.exit(1);
