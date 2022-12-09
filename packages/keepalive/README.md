@@ -15,13 +15,13 @@ import KeepAliveLayout, { useKeepOutlets, KeepAliveContext } from '@young-design
 import { useLocation } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
 
-// 使用 useKeepOutlets 取到当前渲染的页面内容，可能是缓存内容
+// 使用 useKeepOutlets 取到当前渲染的页面内容，包含子路由所有内容 相当于传入的children
 const Layout = () => {
   const element = useKeepOutlets();
   return { element };
 };
 
-// 使用 KeepAliveLayout 包裹上下文
+// 使用 KeepAliveLayout 包裹上下文,传入需要缓存的页面
 const App = () => {
   return <KeepAliveLayout keepalive={[/./]}>// App</KeepAliveLayout>;
 };
