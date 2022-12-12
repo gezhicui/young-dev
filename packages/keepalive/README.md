@@ -21,7 +21,7 @@ const Layout = () => {
   return { element };
 };
 
-// 使用 KeepAliveLayout 包裹上下文,传入需要缓存的页面
+// 使用 KeepAliveLayout 包裹上下文,传入需要缓存的页面作为数组{支持正则、字符串('/users')}
 const App = () => {
   return <KeepAliveLayout keepalive={[/./]}>// App</KeepAliveLayout>;
 };

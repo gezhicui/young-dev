@@ -986,7 +986,7 @@
             }
             return dispatcher;
           }
-          function useContext2(Context) {
+          function useContext3(Context) {
             var dispatcher = resolveDispatcher();
             {
               if (Context._context !== void 0) {
@@ -1000,7 +1000,7 @@
             }
             return dispatcher.useContext(Context);
           }
-          function useState2(initialState) {
+          function useState4(initialState) {
             var dispatcher = resolveDispatcher();
             return dispatcher.useState(initialState);
           }
@@ -1789,7 +1789,7 @@
           exports.startTransition = startTransition;
           exports.unstable_act = act;
           exports.useCallback = useCallback;
-          exports.useContext = useContext2;
+          exports.useContext = useContext3;
           exports.useDebugValue = useDebugValue;
           exports.useDeferredValue = useDeferredValue;
           exports.useEffect = useEffect;
@@ -1800,7 +1800,7 @@
           exports.useMemo = useMemo;
           exports.useReducer = useReducer;
           exports.useRef = useRef;
-          exports.useState = useState2;
+          exports.useState = useState4;
           exports.useSyncExternalStore = useSyncExternalStore;
           exports.useTransition = useTransition;
           exports.version = ReactVersion;
@@ -2296,9 +2296,9 @@
           if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ !== "undefined" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart === "function") {
             __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
           }
-          var React2 = require_react();
+          var React5 = require_react();
           var Scheduler = require_scheduler();
-          var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React5.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           var suppressWarning = false;
           function setSuppressWarning(newSuppressWarning) {
             {
@@ -3819,7 +3819,7 @@
             {
               if (props.value == null) {
                 if (typeof props.children === "object" && props.children !== null) {
-                  React2.Children.forEach(props.children, function(child) {
+                  React5.Children.forEach(props.children, function(child) {
                     if (child == null) {
                       return;
                     }
@@ -11980,7 +11980,7 @@
             }
           }
           var fakeInternalInstance = {};
-          var emptyRefsObject = new React2.Component().refs;
+          var emptyRefsObject = new React5.Component().refs;
           var didWarnAboutStateAssignmentForComponent;
           var didWarnAboutUninitializedState;
           var didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate;
@@ -25384,7 +25384,7 @@
     "../../node_modules/.pnpm/react-router@6.4.5_react@18.2.0/node_modules/react-router/dist/umd/react-router.development.js"(exports, module) {
       (function(global, factory) {
         typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require_router_cjs(), require_react()) : typeof define === "function" && define.amd ? define(["exports", "@remix-run/router", "react"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ReactRouter = {}, global.RemixRouter, global.React));
-      })(exports, function(exports2, router, React2) {
+      })(exports, function(exports2, router, React5) {
         "use strict";
         function _interopNamespace(e) {
           if (e && e.__esModule)
@@ -25406,7 +25406,7 @@
           n["default"] = e;
           return Object.freeze(n);
         }
-        var React__namespace = /* @__PURE__ */ _interopNamespace(React2);
+        var React__namespace = /* @__PURE__ */ _interopNamespace(React5);
         function _extends() {
           _extends = Object.assign ? Object.assign.bind() : function(target) {
             for (var i = 1; i < arguments.length; i++) {
@@ -25426,7 +25426,7 @@
         }
         const is = typeof Object.is === "function" ? Object.is : isPolyfill;
         const {
-          useState: useState2,
+          useState: useState4,
           useEffect,
           useLayoutEffect,
           useDebugValue
@@ -25454,7 +25454,7 @@
           }
           const [{
             inst
-          }, forceUpdate] = useState2({
+          }, forceUpdate] = useState4({
             inst: {
               value,
               getSnapshot
@@ -25571,7 +25571,7 @@
         function useInRouterContext() {
           return React__namespace.useContext(LocationContext) != null;
         }
-        function useLocation2() {
+        function useLocation4() {
           !useInRouterContext() ? router.invariant(
             false,
             "useLocation() may be used only in the context of a <Router> component."
@@ -25588,7 +25588,7 @@
           ) : void 0;
           let {
             pathname
-          } = useLocation2();
+          } = useLocation4();
           return React__namespace.useMemo(() => router.matchPath(pattern, pathname), [pathname, pattern]);
         }
         function useNavigate() {
@@ -25605,7 +25605,7 @@
           } = React__namespace.useContext(RouteContext);
           let {
             pathname: locationPathname
-          } = useLocation2();
+          } = useLocation4();
           let routePathnamesJson = JSON.stringify(router.UNSAFE_getPathContributingMatches(matches).map((match) => match.pathnameBase));
           let activeRef = React__namespace.useRef(false);
           React__namespace.useEffect(() => {
@@ -25659,7 +25659,7 @@
           } = React__namespace.useContext(RouteContext);
           let {
             pathname: locationPathname
-          } = useLocation2();
+          } = useLocation4();
           let routePathnamesJson = JSON.stringify(router.UNSAFE_getPathContributingMatches(matches).map((match) => match.pathnameBase));
           return React__namespace.useMemo(() => router.resolveTo(to, JSON.parse(routePathnamesJson), locationPathname, relative === "path"), [to, routePathnamesJson, locationPathname, relative]);
         }
@@ -25686,7 +25686,7 @@
 
 ` + ('Please change the parent <Route path="' + parentPath + '"> to <Route ') + ('path="' + (parentPath === "/" ? "*" : parentPath + "/*") + '">.'));
           }
-          let locationFromContext = useLocation2();
+          let locationFromContext = useLocation4();
           let location;
           if (locationArg) {
             var _parsedLocationArg$pa;
@@ -26378,7 +26378,7 @@
         exports2.useHref = useHref;
         exports2.useInRouterContext = useInRouterContext;
         exports2.useLoaderData = useLoaderData;
-        exports2.useLocation = useLocation2;
+        exports2.useLocation = useLocation4;
         exports2.useMatch = useMatch;
         exports2.useMatches = useMatches;
         exports2.useNavigate = useNavigate;
@@ -26414,7 +26414,7 @@
     "../../node_modules/.pnpm/react-router-dom@6.4.5_biqbaboplfbrettd7655fr4n2y/node_modules/react-router-dom/dist/umd/react-router-dom.development.js"(exports, module) {
       (function(global, factory) {
         typeof exports === "object" && typeof module !== "undefined" ? factory(exports, require_react(), require_main(), require_router_cjs()) : typeof define === "function" && define.amd ? define(["exports", "react", "react-router", "@remix-run/router"], factory) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, factory(global.ReactRouterDOM = {}, global.React, global.ReactRouter, global.RemixRouter));
-      })(exports, function(exports2, React2, reactRouter, router) {
+      })(exports, function(exports2, React5, reactRouter, router) {
         "use strict";
         function _interopNamespace(e) {
           if (e && e.__esModule)
@@ -26436,7 +26436,7 @@
           n["default"] = e;
           return Object.freeze(n);
         }
-        var React__namespace = /* @__PURE__ */ _interopNamespace(React2);
+        var React__namespace = /* @__PURE__ */ _interopNamespace(React5);
         function _extends() {
           _extends = Object.assign ? Object.assign.bind() : function(target) {
             for (var i = 1; i < arguments.length; i++) {
@@ -26685,7 +26685,7 @@
         {
           HistoryRouter.displayName = "unstable_HistoryRouter";
         }
-        const Link2 = /* @__PURE__ */ React__namespace.forwardRef(function LinkWithRef(_ref4, ref) {
+        const Link4 = /* @__PURE__ */ React__namespace.forwardRef(function LinkWithRef(_ref4, ref) {
           let {
             onClick,
             relative,
@@ -26721,7 +26721,7 @@
           }));
         });
         {
-          Link2.displayName = "Link";
+          Link4.displayName = "Link";
         }
         const NavLink = /* @__PURE__ */ React__namespace.forwardRef(function NavLinkWithRef(_ref5, ref) {
           let {
@@ -26765,7 +26765,7 @@
             isActive,
             isPending
           }) : styleProp;
-          return /* @__PURE__ */ React__namespace.createElement(Link2, _extends({}, rest, {
+          return /* @__PURE__ */ React__namespace.createElement(Link4, _extends({}, rest, {
             "aria-current": ariaCurrent,
             className,
             ref,
@@ -27416,7 +27416,7 @@
         exports2.BrowserRouter = BrowserRouter;
         exports2.Form = Form;
         exports2.HashRouter = HashRouter2;
-        exports2.Link = Link2;
+        exports2.Link = Link4;
         exports2.NavLink = NavLink;
         exports2.ScrollRestoration = ScrollRestoration;
         exports2.createBrowserRouter = createBrowserRouter;
@@ -27453,7 +27453,7 @@
       if (true) {
         (function() {
           "use strict";
-          var React2 = require_react();
+          var React5 = require_react();
           var REACT_ELEMENT_TYPE = Symbol.for("react.element");
           var REACT_PORTAL_TYPE = Symbol.for("react.portal");
           var REACT_FRAGMENT_TYPE = Symbol.for("react.fragment");
@@ -27479,7 +27479,7 @@
             }
             return null;
           }
-          var ReactSharedInternals = React2.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+          var ReactSharedInternals = React5.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
           function error(format) {
             {
               {
@@ -28399,21 +28399,21 @@
         });
         return isKeep;
       };
-      function useKeepOutlets2() {
+      function useKeepOutlets3() {
         const location = (0, react_router_dom_1.useLocation)();
-        const element = (0, react_router_dom_1.useOutlet)();
+        const curElement = (0, react_router_dom_1.useOutlet)();
         const { keepElements, keepalive } = (0, react_1.useContext)(exports.KeepAliveContext);
         const isKeep = isKeepPath(keepalive, location.pathname);
         if (isKeep) {
-          keepElements.current[location.pathname] = element;
+          keepElements.current[location.pathname] = curElement;
         }
-        return (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [Object.entries(keepElements.current).map(([pathname, element2]) => (0, jsx_runtime_1.jsx)("div", Object.assign({
+        return (0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [Object.entries(keepElements.current).map(([pathname, element]) => (0, jsx_runtime_1.jsx)("div", Object.assign({
           style: { height: "100%", width: "100%", position: "relative", overflow: "hidden auto" },
           className: "rumtime-keep-alive-layout",
           hidden: !(0, react_router_dom_1.matchPath)(location.pathname, pathname)
-        }, { children: element2 }), pathname)), (0, jsx_runtime_1.jsx)("div", Object.assign({ hidden: isKeep, style: { height: "100%", width: "100%", position: "relative", overflow: "hidden auto" }, className: "rumtime-keep-alive-layout-no" }, { children: !isKeep && element }))] });
+        }, { children: element }), pathname)), (0, jsx_runtime_1.jsx)("div", Object.assign({ hidden: isKeep, style: { height: "100%", width: "100%", position: "relative", overflow: "hidden auto" }, className: "rumtime-keep-alive-layout-no" }, { children: !isKeep && curElement }))] });
       }
-      exports.useKeepOutlets = useKeepOutlets2;
+      exports.useKeepOutlets = useKeepOutlets3;
       var KeepAliveLayout2 = (props) => {
         const { keepalive } = props, other = __rest(props, ["keepalive"]);
         const keepElements = react_1.default.useRef({});
@@ -28427,66 +28427,115 @@
   });
 
   // src/index.tsx
-  var import_react = __toESM(require_react());
+  var import_react4 = __toESM(require_react());
   var import_client = __toESM(require_client());
+  var import_react_router_dom4 = __toESM(require_main2());
+  var import_keepalive3 = __toESM(require_lib());
+
+  // src/layout/index.tsx
+  var import_react = __toESM(require_react());
   var import_react_router_dom = __toESM(require_main2());
   var import_keepalive = __toESM(require_lib());
+
+  // style-helper:__style_helper__
+  function injectStyle(text) {
+    if (typeof document !== "undefined") {
+      var style = document.createElement("style");
+      var node = document.createTextNode(text);
+      style.appendChild(node);
+      document.head.appendChild(style);
+    }
+  }
+
+  // style-content:D:\CodeDemo\造轮子\young-js\examples\app\src\layout\index.css
+  var layout_default = ".malita-layout{font-size:24px}\n";
+
+  // style-stub:D:\CodeDemo\造轮子\young-js\examples\app\src\layout\index.css
+  injectStyle(layout_default);
+
+  // src/layout/index.tsx
   var Layout = () => {
     const { pathname } = (0, import_react_router_dom.useLocation)();
     const element = (0, import_keepalive.useKeepOutlets)();
-    return /* @__PURE__ */ import_react.default.createElement("div", null, /* @__PURE__ */ import_react.default.createElement("div", null, "\u5F53\u524D\u8DEF\u7531: ", pathname), /* @__PURE__ */ import_react.default.createElement("div", null, element));
+    return /* @__PURE__ */ import_react.default.createElement("div", {
+      className: "malita-layout"
+    }, /* @__PURE__ */ import_react.default.createElement("div", null, "\u5F53\u524D\u8DEF\u7531: ", pathname), /* @__PURE__ */ import_react.default.createElement("div", null, element));
   };
-  var Hello = () => {
-    const [text, setText] = import_react.default.useState("Hello Malita!");
-    const [count, setCount] = (0, import_react.useState)(0);
-    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("p", {
+  var layout_default2 = Layout;
+
+  // src/pages/home/index.tsx
+  var import_react2 = __toESM(require_react());
+  var import_react_router_dom2 = __toESM(require_main2());
+
+  // style-content:D:\CodeDemo\造轮子\young-js\examples\app\src\pages\home\index.css
+  var home_default = ".malita-home{font-size:32px;color:#00f}\n";
+
+  // style-stub:D:\CodeDemo\造轮子\young-js\examples\app\src\pages\home\index.css
+  injectStyle(home_default);
+
+  // src/pages/home/index.tsx
+  var Home = () => {
+    const [text, setText] = import_react2.default.useState("Hello Malita!");
+    const [count, setCount] = (0, import_react2.useState)(0);
+    return /* @__PURE__ */ import_react2.default.createElement(import_react2.default.Fragment, null, /* @__PURE__ */ import_react2.default.createElement("p", {
       onClick: () => {
         setText("Hi!");
       }
-    }, text), /* @__PURE__ */ import_react.default.createElement("p", null, count), /* @__PURE__ */ import_react.default.createElement("p", null, /* @__PURE__ */ import_react.default.createElement("button", {
+    }, text), /* @__PURE__ */ import_react2.default.createElement("p", {
+      className: "malita-home"
+    }, count), /* @__PURE__ */ import_react2.default.createElement("p", null, /* @__PURE__ */ import_react2.default.createElement("button", {
       onClick: () => setCount((count2) => count2 + 1)
-    }, " Click Me! Add!")), /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Link, {
+    }, " Click Me! Add!")), /* @__PURE__ */ import_react2.default.createElement(import_react_router_dom2.Link, {
       to: "/users"
-    }, "go to Users"), /* @__PURE__ */ import_react.default.createElement("br", null), /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Link, {
-      to: "/me"
-    }, "go to Me"));
+    }, "go to Users"), /* @__PURE__ */ import_react2.default.createElement("br", null));
   };
+  var home_default2 = Home;
+
+  // src/pages/users/index.tsx
+  var import_react3 = __toESM(require_react());
+  var import_react_router_dom3 = __toESM(require_main2());
+  var import_keepalive2 = __toESM(require_lib());
+
+  // style-content:D:\CodeDemo\造轮子\young-js\examples\app\src\pages\users\index.css
+  var users_default = ".malita-users{font-size:24px;color:red}\n";
+
+  // style-stub:D:\CodeDemo\造轮子\young-js\examples\app\src\pages\users\index.css
+  injectStyle(users_default);
+
+  // src/pages/users/index.tsx
   var Users = () => {
-    const [count, setCount] = (0, import_react.useState)(0);
-    const { pathname } = (0, import_react_router_dom.useLocation)();
-    const { dropByCacheKey } = (0, import_react.useContext)(import_keepalive.KeepAliveContext);
-    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("p", null, " Users "), /* @__PURE__ */ import_react.default.createElement("p", null, count), /* @__PURE__ */ import_react.default.createElement("p", null, /* @__PURE__ */ import_react.default.createElement("button", {
+    const [count, setCount] = (0, import_react3.useState)(0);
+    const { pathname } = (0, import_react_router_dom3.useLocation)();
+    const { dropByCacheKey } = (0, import_react3.useContext)(import_keepalive2.KeepAliveContext);
+    return /* @__PURE__ */ import_react3.default.createElement(import_react3.default.Fragment, null, /* @__PURE__ */ import_react3.default.createElement("p", null, " Users "), /* @__PURE__ */ import_react3.default.createElement("p", {
+      className: "malita-users"
+    }, count), /* @__PURE__ */ import_react3.default.createElement("p", null, /* @__PURE__ */ import_react3.default.createElement("button", {
       onClick: () => setCount((count2) => count2 + 1)
-    }, " Click Me! Add++!")), /* @__PURE__ */ import_react.default.createElement("p", null, /* @__PURE__ */ import_react.default.createElement("button", {
+    }, " Click Me! Add++!")), /* @__PURE__ */ import_react3.default.createElement("p", null, /* @__PURE__ */ import_react3.default.createElement("button", {
       onClick: () => dropByCacheKey(pathname)
-    }, " Click Me! Clear Cache!")), /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Link, {
+    }, " Click Me! Clear Cache!")), /* @__PURE__ */ import_react3.default.createElement(import_react_router_dom3.Link, {
       to: "/"
     }, "go Home"));
   };
-  var Me = () => {
-    return /* @__PURE__ */ import_react.default.createElement(import_react.default.Fragment, null, /* @__PURE__ */ import_react.default.createElement("p", null, " Me "), " ", /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Link, {
-      to: "/"
-    }, "go Home"));
-  };
+  var users_default2 = Users;
+
+  // src/index.tsx
   var App = () => {
-    return /* @__PURE__ */ import_react.default.createElement(import_keepalive.default, {
-      keepalive: ["/users", "/me"]
-    }, /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.HashRouter, null, /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Routes, null, /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Route, {
+    return /* @__PURE__ */ import_react4.default.createElement(import_keepalive3.default, {
+      keepalive: ["/", "/users"]
+    }, /* @__PURE__ */ import_react4.default.createElement(import_react_router_dom4.HashRouter, null, /* @__PURE__ */ import_react4.default.createElement(import_react_router_dom4.Routes, null, /* @__PURE__ */ import_react4.default.createElement(import_react_router_dom4.Route, {
       path: "/",
-      element: /* @__PURE__ */ import_react.default.createElement(Layout, null)
-    }, /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Route, {
+      element: /* @__PURE__ */ import_react4.default.createElement(layout_default2, null)
+    }, /* @__PURE__ */ import_react4.default.createElement(import_react_router_dom4.Route, {
       path: "/",
-      element: /* @__PURE__ */ import_react.default.createElement(Hello, null)
-    }), /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Route, {
+      element: /* @__PURE__ */ import_react4.default.createElement(home_default2, null)
+    }), /* @__PURE__ */ import_react4.default.createElement(import_react_router_dom4.Route, {
       path: "/users",
-      element: /* @__PURE__ */ import_react.default.createElement(Users, null)
-    }), /* @__PURE__ */ import_react.default.createElement(import_react_router_dom.Route, {
-      path: "/me",
-      element: /* @__PURE__ */ import_react.default.createElement(Me, null)
+      element: /* @__PURE__ */ import_react4.default.createElement(users_default2, null)
     })))));
   };
   var root = import_client.default.createRoot(document.getElementById("malita"));
-  root.render(import_react.default.createElement(App));
+  root.render(import_react4.default.createElement(App));
 })();
 /**
  * @license React

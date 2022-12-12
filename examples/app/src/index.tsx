@@ -3,76 +3,18 @@ import ReactDOM from 'react-dom/client';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import KeepAliveLayout, { useKeepOutlets, KeepAliveContext } from '@young-design/keepalive';
 
-const Layout = () => {
-  const { pathname } = useLocation();
-  const element = useKeepOutlets();
-  return (
-    <div>
-      <div>当前路由: {pathname}</div>
-      <div>{element}</div>
-    </div>
-  );
-};
-
-const Hello = () => {
-  const [text, setText] = React.useState('Hello Malita!');
-  const [count, setCount] = useState(0);
-  return (
-    <>
-      <p
-        onClick={() => {
-          setText('Hi!');
-        }}
-      >
-        {text}
-      </p>
-      <p>{count}</p>
-      <p>
-        <button onClick={() => setCount(count => count + 1)}> Click Me! Add!</button>
-      </p>
-      <Link to="/users">go to Users</Link>
-      <br />
-      <Link to="/me">go to Me</Link>
-    </>
-  );
-};
-
-const Users = () => {
-  const [count, setCount] = useState(0);
-  const { pathname } = useLocation();
-  const { dropByCacheKey } = useContext<any>(KeepAliveContext);
-  return (
-    <>
-      <p> Users </p>
-      <p>{count}</p>
-      <p>
-        <button onClick={() => setCount(count => count + 1)}> Click Me! Add++!</button>
-      </p>
-      <p>
-        <button onClick={() => dropByCacheKey(pathname)}> Click Me! Clear Cache!</button>
-      </p>
-      <Link to="/">go Home</Link>
-    </>
-  );
-};
-
-const Me = () => {
-  return (
-    <>
-      <p> Me </p> <Link to="/">go Home</Link>
-    </>
-  );
-};
+import Layout from './layout';
+import Home from './pages/home';
+import Users from './pages/users';
 
 const App = () => {
   return (
-    <KeepAliveLayout keepalive={['/users', '/me']}>
+    <KeepAliveLayout keepalive={['/', '/users']}>
       <HashRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Hello />} />
+            <Route path="/" element={<Home />} />
             <Route path="/users" element={<Users />} />
-            <Route path="/me" element={<Me />} />
           </Route>
         </Routes>
       </HashRouter>
@@ -80,5 +22,5 @@ const App = () => {
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById('malita'));
+const root = ReactDOM.createRoot(document.getElementById('malita') as Element);
 root.render(React.createElement(App));

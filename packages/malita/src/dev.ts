@@ -12,6 +12,7 @@ import {
   DEFAULT_BUILD_PORT,
 } from './constants';
 import { createWebSocketServer } from './server';
+import { style } from './styles';
 
 export const dev = async () => {
   const cwd = process.cwd();
@@ -79,6 +80,7 @@ export const dev = async () => {
           'process.env.NODE_ENV': JSON.stringify('development'),
         },
         external: ['esbuild'],
+        plugins: [style()],
         entryPoints: [path.resolve(cwd, DEFAULT_ENTRY_POINT)],
       });
     } catch (e) {

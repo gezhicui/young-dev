@@ -25,11 +25,11 @@ const isKeepPath = (aliveList: any[], path: string) => {
 
 export function useKeepOutlets() {
   const location = useLocation();
-  const element = useOutlet();
+  const curElement = useOutlet();
   const { keepElements, keepalive } = useContext<any>(KeepAliveContext);
   const isKeep = isKeepPath(keepalive, location.pathname);
   if (isKeep) {
-    keepElements.current[location.pathname] = element;
+    keepElements.current[location.pathname] = curElement;
   }
 
   return (
@@ -50,7 +50,7 @@ export function useKeepOutlets() {
         style={{ height: '100%', width: '100%', position: 'relative', overflow: 'hidden auto' }}
         className="rumtime-keep-alive-layout-no"
       >
-        {!isKeep && element}
+        {!isKeep && curElement}
       </div>
     </>
   );
