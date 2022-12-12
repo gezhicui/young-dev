@@ -2911,7 +2911,6 @@ function createWebSocketServer(server) {
     console.log("wss.on connection");
     socket.send(JSON.stringify({ type: "connected" }));
     socket.on("message", (data) => {
-      console.log("\u63A5\u6536\u5FC3\u8DF3:", data.toString());
     });
   });
   wss.on("error", (e) => {

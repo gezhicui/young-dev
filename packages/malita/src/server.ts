@@ -19,7 +19,7 @@ export function createWebSocketServer(server: HttpServer) {
     console.log('wss.on connection');
     socket.send(JSON.stringify({ type: 'connected' }));
     socket.on('message', data => {
-      console.log('接收心跳:', data.toString());
+      // console.log('接收心跳:', data.toString());
     });
   });
 

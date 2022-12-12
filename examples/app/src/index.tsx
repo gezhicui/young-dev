@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import KeepAliveLayout, { useKeepOutlets, KeepAliveContext } from '@young-design/keepalive';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import KeepAliveLayout from '@young-design/keepalive';
 
-import Layout from './layout';
+import Layout from './layouts';
 import Home from './pages/home';
 import Users from './pages/users';
 

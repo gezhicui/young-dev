@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "pnpm esbuild src/** --bundle --outdir=www",
+    "build": "pnpm esbuild src/** --bundle --outdir=dist",
     "dev": "malita dev",
-    "serve": "cd www && serve"
+    "serve": "cd dist && serve"
   },
   "keywords": [],
   "author": "",

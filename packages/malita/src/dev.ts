@@ -13,6 +13,8 @@ import {
 } from './constants';
 import { createWebSocketServer } from './server';
 import { style } from './styles';
+import { getAppData } from './appData';
+import { getRoutes } from './routes';
 
 export const dev = async () => {
   const cwd = process.cwd();
@@ -22,7 +24,7 @@ export const dev = async () => {
     port: DEFAULT_PORT,
   });
 
-  const esbuildOutput = path.resolve(cwd, DEFAULT_OUTDIR);
+  const output = path.resolve(cwd, DEFAULT_OUTDIR);
   app.get('/', (_req, res) => {
     res.set('Content-Type', 'text/html');
     res.send(`<!DOCTYPE html>
@@ -44,11 +46,11 @@ export const dev = async () => {
   });
 
   // 设置静态文件目录
-  app.use(`/${DEFAULT_OUTDIR}`, express.static(esbuildOutput));
+  app.use(`/${DEFAULT_OUTDIR}`, express.static(output));
   app.use(`/malita`, express.static(path.resolve(__dirname, 'client')));
 
-  console.log('主文件目录:', esbuildOutput);
-  console.log('客户端ws目录:', path.resolve(__dirname, 'client'));
+  // console.log('主文件目录:', output);
+  // console.log('客户端ws目录:', path.resolve(__dirname, 'client'));
 
   const malitaServe = createServer(app);
   const ws = createWebSocketServer(malitaServe);
@@ -60,10 +62,17 @@ export const dev = async () => {
   malitaServe.listen(port, async () => {
     console.log(`App listening at http://${DEFAULT_HOST}:${port}`);
     try {
+      // 获取当前项目基础信息
+      const appData = await getAppData({ cwd });
+      // 获取 routes 配置
+      const routes = await getRoutes({ appData });
+      // console.log('获取路由配置', routes);
+      console.log(routes);
+
       await build({
         format: 'iife',
         logLevel: 'error',
-        outdir: esbuildOutput,
+        outdir: output,
         platform: DEFAULT_PLATFORM,
         bundle: true,
         watch: {

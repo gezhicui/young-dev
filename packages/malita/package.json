@@ -8,8 +8,7 @@
   "scripts": {
     "build": "pnpm build:env && pnpm build:client",
     "build:env": "pnpm esbuild ./src/** --bundle --outdir=lib --platform=node --external:esbuild",
-    "build:client": "pnpm esbuild ./client/** --outdir=lib/client --bundle --external:esbuild",
-    "dev": "pnpm build --watch"
+    "build:client": "pnpm esbuild ./client/** --outdir=lib/client --bundle --external:esbuild"
   },
   "keywords": [],
   "license": "ISC",
