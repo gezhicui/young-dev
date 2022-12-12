@@ -53,8 +53,6 @@ export const getRoutes = ({ appData }: { appData: AppData }) => {
 
       resolve(routes);
     } else {
-      console.log('yesyes');
-
       resolve([
         {
           path: '/',

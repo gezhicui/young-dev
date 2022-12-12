@@ -32,7 +32,7 @@ __export(constants_exports, {
 });
 module.exports = __toCommonJS(constants_exports);
 var DEFAULT_OUTDIR = "dist";
-var DEFAULT_ENTRY_POINT = "src/index.tsx";
+var DEFAULT_ENTRY_POINT = "malita.tsx";
 var DEFAULT_TEMPLATE = ".malita";
 var DEFAULT_GLOBAL_LAYOUTS = "layouts/index.tsx";
 var DEFAULT_FRAMEWORK_NAME = "malita";
