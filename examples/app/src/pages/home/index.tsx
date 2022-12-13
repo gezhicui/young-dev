@@ -16,7 +16,7 @@ const Home = () => {
       </p>
       <p className="malita-home">{count}</p>
       <p>
-        <button onClick={() => setCount(count => count + 1)}> Click Me! Add!</button>
+        <button onClick={() => setCount(count => count + 1)}> Click Me to Add!</button>
       </p>
       <Link to="/users">go to Users</Link>
       <br />

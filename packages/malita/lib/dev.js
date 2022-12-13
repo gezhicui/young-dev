@@ -27558,7 +27558,7 @@ function style() {
 
 // src/appData.ts
 var import_path2 = __toESM(require("path"));
-var getAppData = ({ cwd }) => {
+var getAppData = ({ cwd, port }) => {
   return new Promise((resolve, rejects) => {
     const absSrcPath = import_path2.default.resolve(cwd, "src");
     const absPagesPath = import_path2.default.resolve(absSrcPath, "pages");
@@ -27568,6 +27568,7 @@ var getAppData = ({ cwd }) => {
     const absOutputPath = import_path2.default.resolve(cwd, DEFAULT_OUTDIR);
     const paths = {
       cwd,
+      port,
       absSrcPath,
       absPagesPath,
       absNodeModulesPath,
@@ -27586,7 +27587,7 @@ var import_path3 = __toESM(require("path"));
 var import_esbuild2 = require("esbuild");
 var getUserConfig = ({
   appData,
-  sendMessage
+  malitaServe
 }) => {
   return new Promise((resolve, rejects) => __async(void 0, null, function* () {
     let config = {};
@@ -27603,7 +27604,7 @@ var getUserConfig = ({
               console.error(JSON.stringify(err));
               return;
             }
-            sendMessage == null ? void 0 : sendMessage("reload");
+            malitaServe.emit("REBUILD", { appData });
           }
         },
         define: {
@@ -27613,7 +27614,9 @@ var getUserConfig = ({
         entryPoints: [configFile]
       });
       try {
-        config = require(import_path3.default.resolve(appData.paths.absOutputPath, "malita.config.js")).default;
+        const configFile2 = import_path3.default.resolve(appData.paths.absOutputPath, "malita.config.js");
+        delete require.cache[configFile2];
+        config = require(configFile2).default;
       } catch (error) {
         console.error("getUserConfig error", error);
         rejects(error);
@@ -27708,6 +27711,7 @@ var generateEntry = ({
   userConfig
 }) => {
   return new Promise((resolve, rejects) => {
+    var _a;
     count = 0;
     const { routesStr, importStr } = getRouteStr(routes);
     const content = `
@@ -27719,7 +27723,7 @@ var generateEntry = ({
 
       const App = () => {
         return (
-          <KeepAliveLayout keepalive={[${configStringify(userConfig.keepalive || [])}]}>
+          <KeepAliveLayout keepalive={[${configStringify((_a = userConfig == null ? void 0 : userConfig.keepalive) != null ? _a : [])}]}>
             <HashRouter>
               <Routes>
                 ${routesStr}
@@ -27812,19 +27816,21 @@ var dev = () => __async(void 0, null, function* () {
   function sendMessage(type, data) {
     ws.send(JSON.stringify({ type, data }));
   }
+  const buildMain = (_0) => __async(void 0, [_0], function* ({ appData }) {
+    const userConfig = yield getUserConfig({ appData, malitaServe });
+    const routes = yield getRoutes({ appData });
+    yield generateEntry({ appData, routes, userConfig });
+    yield generateHtml({ appData, userConfig });
+  });
+  malitaServe.on("REBUILD", (_0) => __async(void 0, [_0], function* ({ appData }) {
+    yield buildMain({ appData });
+    sendMessage("reload");
+  }));
   malitaServe.listen(port, () => __async(void 0, null, function* () {
     console.log(`App listening at http://${DEFAULT_HOST}:${port}`);
     try {
-      const appData = yield getAppData({
-        cwd
-      });
-      const userConfig = yield getUserConfig({
-        appData,
-        sendMessage
-      });
-      const routes = yield getRoutes({ appData });
-      yield generateEntry({ appData, routes, userConfig });
-      yield generateHtml({ appData, userConfig });
+      const appData = yield getAppData({ cwd, port });
+      yield buildMain({ appData });
       yield (0, import_esbuild3.build)({
         format: "iife",
         logLevel: "error",
@@ -27837,6 +27843,7 @@ var dev = () => __async(void 0, null, function* () {
               console.error(JSON.stringify(err));
               return;
             }
+            console.log("esbuild rebuild~~");
             sendMessage("reload");
           }
         },

@@ -52,7 +52,7 @@ export const generateEntry = ({
 
       const App = () => {
         return (
-          <KeepAliveLayout keepalive={[${configStringify(userConfig.keepalive || [])}]}>
+          <KeepAliveLayout keepalive={[${configStringify(userConfig?.keepalive ?? [])}]}>
             <HashRouter>
               <Routes>
                 ${routesStr}
