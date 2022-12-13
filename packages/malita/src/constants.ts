@@ -9,3 +9,4 @@ export const DEFAULT_HOST = '127.0.0.1';
 export const DEFAULT_PORT = 8888;
 // esbuild服务监听文件端口
 export const DEFAULT_BUILD_PORT = 6677;
+export const DEFAULT_CONFIG_FILE = 'malita.config.ts';

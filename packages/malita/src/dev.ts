@@ -8,6 +8,7 @@ import { DEFAULT_OUTDIR, DEFAULT_PLATFORM, DEFAULT_PORT, DEFAULT_HOST } from './
 import { createWebSocketServer } from './server';
 import { style } from './styles';
 import { getAppData } from './appData';
+import { getUserConfig } from './config';
 import { getRoutes } from './routes';
 import { generateEntry } from './entry';
 import { generateHtml } from './html';
@@ -49,12 +50,17 @@ export const dev = async () => {
       const appData = await getAppData({
         cwd,
       });
+      // 获取用户数据
+      const userConfig = await getUserConfig({
+        appData,
+        sendMessage,
+      });
       // 获取 routes 配置
       const routes = await getRoutes({ appData });
       // 生成项目主入口
-      await generateEntry({ appData, routes });
+      await generateEntry({ appData, routes, userConfig });
       // 生成 Html
-      await generateHtml({ appData });
+      await generateHtml({ appData, userConfig });
       // 执行构建
       await build({
         format: 'iife',

@@ -21,6 +21,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var constants_exports = {};
 __export(constants_exports, {
   DEFAULT_BUILD_PORT: () => DEFAULT_BUILD_PORT,
+  DEFAULT_CONFIG_FILE: () => DEFAULT_CONFIG_FILE,
   DEFAULT_ENTRY_POINT: () => DEFAULT_ENTRY_POINT,
   DEFAULT_FRAMEWORK_NAME: () => DEFAULT_FRAMEWORK_NAME,
   DEFAULT_GLOBAL_LAYOUTS: () => DEFAULT_GLOBAL_LAYOUTS,
@@ -40,9 +41,11 @@ var DEFAULT_PLATFORM = "browser";
 var DEFAULT_HOST = "127.0.0.1";
 var DEFAULT_PORT = 8888;
 var DEFAULT_BUILD_PORT = 6677;
+var DEFAULT_CONFIG_FILE = "malita.config.ts";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   DEFAULT_BUILD_PORT,
+  DEFAULT_CONFIG_FILE,
   DEFAULT_ENTRY_POINT,
   DEFAULT_FRAMEWORK_NAME,
   DEFAULT_GLOBAL_LAYOUTS,
