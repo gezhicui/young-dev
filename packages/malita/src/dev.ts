@@ -14,6 +14,7 @@ import { getUserConfig } from './config';
 import { getRoutes } from './routes';
 import { generateEntry } from './entry';
 import { generateHtml } from './html';
+import { getMockConfig } from './mock';
 
 export const dev = async () => {
   const cwd = process.cwd();
@@ -47,12 +48,30 @@ export const dev = async () => {
   const buildMain = async ({ appData }: { appData: AppData }) => {
     // 获取用户数据
     const userConfig = await getUserConfig({ appData, malitaServe });
+    // 获取用户配置的mock数据
+    const mockConfig = await getMockConfig({ appData, malitaServe });
     // 获取 routes 配置
     const routes = await getRoutes({ appData });
     // 生成项目主入口
     await generateEntry({ appData, routes, userConfig });
     // 生成 Html
     await generateHtml({ appData, userConfig });
+
+    //处理用户mock数据
+    app.use((req, res, next) => {
+      const result = mockConfig?.[req.method]?.[req.url];
+      if (
+        Object.prototype.toString.call(result) === '[object String]' ||
+        Object.prototype.toString.call(result) === '[object Array]' ||
+        Object.prototype.toString.call(result) === '[object Object]'
+      ) {
+        res.json(result);
+      } else if (Object.prototype.toString.call(result) === '[object Function]') {
+        result(req, res);
+      } else {
+        next();
+      }
+    });
 
     if (userConfig.proxy) {
       Object.keys(userConfig.proxy).forEach(key => {
