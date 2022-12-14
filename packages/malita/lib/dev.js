@@ -34597,7 +34597,7 @@ function style() {
 
 // src/appData.ts
 var import_path2 = __toESM(require("path"));
-var getAppData = ({ cwd, port }) => {
+var getAppData = ({ cwd, port = DEFAULT_PORT }) => {
   return new Promise((resolve, rejects) => {
     const absSrcPath = import_path2.default.resolve(cwd, "src");
     const absPagesPath = import_path2.default.resolve(absSrcPath, "pages");
@@ -34626,7 +34626,8 @@ var import_path3 = __toESM(require("path"));
 var import_esbuild2 = require("esbuild");
 var getUserConfig = ({
   appData,
-  malitaServe
+  malitaServe,
+  isProduction = false
 }) => {
   return new Promise((resolve, rejects) => __async(void 0, null, function* () {
     let config = {};
@@ -34637,17 +34638,17 @@ var getUserConfig = ({
         logLevel: "error",
         outdir: appData.paths.absOutputPath,
         bundle: true,
-        watch: {
+        watch: isProduction ? false : {
           onRebuild: (err, res) => {
             if (err) {
               console.error(JSON.stringify(err));
               return;
             }
-            malitaServe.emit("REBUILD", { appData });
+            malitaServe == null ? void 0 : malitaServe.emit("REBUILD", { appData });
           }
         },
         define: {
-          "process.env.NODE_ENV": JSON.stringify("development")
+          "process.env.NODE_ENV": JSON.stringify(isProduction ? "production" : "development")
         },
         external: ["esbuild"],
         entryPoints: [configFile]
@@ -34794,26 +34795,28 @@ var import_fs4 = require("fs");
 var import_path6 = __toESM(require("path"));
 var generateHtml = ({
   appData,
-  userConfig
+  userConfig,
+  isProduction = false
 }) => {
   return new Promise((resolve, rejects) => {
     var _a, _b;
     const title = (_b = (_a = userConfig == null ? void 0 : userConfig.title) != null ? _a : appData.pkg.name) != null ? _b : "Malita";
+    const mainEntry = `${isProduction ? "." : `/${DEFAULT_OUTDIR}`}/${DEFAULT_FRAMEWORK_NAME}.js`;
     const content = `
         <!DOCTYPE html>
         <html lang="en">
         
         <head>
-            <meta charset="UTF-8">
-            <title>${title}</title>
+          <meta charset="UTF-8">
+          <title>${title}</title>
         </head>
         
         <body>
             <div id="malita">
                 <span>loading...</span>
             </div>
-            <script src="/${DEFAULT_OUTDIR}/${DEFAULT_FRAMEWORK_NAME}.js"><\/script>
-            <script src="/malita/client.js"><\/script>
+            <script src="${isProduction ? "." : `/${DEFAULT_OUTDIR}`}/${DEFAULT_FRAMEWORK_NAME}.js"><\/script>
+            ${isProduction ? "" : '<script src="/malita/client.js"><\/script>'}
         </body>
         </html>`;
     try {

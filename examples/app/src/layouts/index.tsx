@@ -8,7 +8,7 @@ const Layout = () => {
   const element = useKeepOutlets();
   return (
     <div className="malita-layout">
-      <div>当前路由: {pathname}</div>
+      <div>当前路由是: {pathname}</div>
       <div>{element}</div>
     </div>
   );

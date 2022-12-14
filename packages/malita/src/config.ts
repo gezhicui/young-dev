@@ -14,9 +14,11 @@ export interface UserConfig {
 export const getUserConfig = ({
   appData,
   malitaServe,
+  isProduction = false,
 }: {
   appData: AppData;
-  malitaServe: Server;
+  malitaServe?: Server;
+  isProduction?: boolean;
 }) => {
   return new Promise(async (resolve: (value: UserConfig) => void, rejects) => {
     let config = {};
@@ -27,18 +29,19 @@ export const getUserConfig = ({
         logLevel: 'error',
         outdir: appData.paths.absOutputPath,
         bundle: true,
-        watch: {
-          onRebuild: (err, res) => {
-            if (err) {
-              console.error(JSON.stringify(err));
-              return;
-            }
-            // 用户配置文件发生更改时，也重新构建包
-            malitaServe.emit('REBUILD', { appData });
-          },
-        },
+        watch: isProduction
+          ? false
+          : {
+              onRebuild: (err, res) => {
+                if (err) {
+                  console.error(JSON.stringify(err));
+                  return;
+                }
+                malitaServe?.emit('REBUILD', { appData });
+              },
+            },
         define: {
-          'process.env.NODE_ENV': JSON.stringify('development'),
+          'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
         },
         external: ['esbuild'],
         entryPoints: [configFile],

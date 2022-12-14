@@ -6,6 +6,7 @@
     "malita": "bin/malita.js"
   },
   "scripts": {
+    "dev":"pnpm build:env --watch",
     "build": "pnpm build:env && pnpm build:client",
     "build:env": "pnpm esbuild ./src/** --bundle --outdir=lib --platform=node --external:esbuild",
     "build:client": "pnpm esbuild ./client/** --outdir=lib/client --bundle --external:esbuild"
