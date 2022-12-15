@@ -20,42 +20,30 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       typescript: 4.9.3
 
-  examples/app:
+  app:
     specifiers:
       '@types/react': ^18.0.26
       '@types/react-dom': ^18.0.9
-      '@young-design/keepalive': workspace:*
-      malita: workspace:*
+      '@young-design/keepalive': ^0.0.3
       react: ^18.0.0
       react-dom: ^18.0.0
       react-router: ^6.4.5
       react-router-dom: ^6.4.5
       serve: ^13.0.2
+      youngdev: workspace:0.0.2
     dependencies:
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
-      '@young-design/keepalive': link:../../packages/keepalive
-      malita: link:../../packages/malita
+      '@young-design/keepalive': 0.0.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-router: 6.4.5_react@18.2.0
       react-router-dom: 6.4.5_biqbaboplfbrettd7655fr4n2y
+      youngdev: link:../youngdev
     devDependencies:
       serve: 13.0.4
 
-  packages/keepalive:
-    specifiers:
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      react-router: ^6.3.0
-      react-router-dom: ^6.3.0
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      react-router: 6.4.5_react@18.2.0
-      react-router-dom: 6.4.5_biqbaboplfbrettd7655fr4n2y
-
-  packages/malita:
+  youngdev:
     specifiers:
       '@types/glob': ^8.0.0
       '@types/ws': ^8.5.3
@@ -185,6 +173,15 @@ packages:
     dependencies:
       '@types/node': 17.0.45
     dev: true
+
+  /@young-design/keepalive/0.0.3:
+    resolution: {integrity: sha512-C6Mjr8md94YIlgK7NuOaHsX9F9uEXw7Chcf6KJnk+DFycYxIrZvxijGa+ogD/FT2QUp7Evm9H1psibzakXiV3A==}
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 6.4.5_react@18.2.0
+      react-router-dom: 6.4.5_biqbaboplfbrettd7655fr4n2y
+    dev: false
 
   /@zeit/schemas/2.6.0:
     resolution: {integrity: sha512-uUrgZ8AxS+Lio0fZKAipJjAh415JyrOZowliZAzmnJSsf7piVL5w+G0+gFJ0KSu3QRhvui/7zuvpLz03YjXAhg==}

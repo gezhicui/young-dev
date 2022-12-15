@@ -1,0 +1,27 @@
+{
+  "name": "young-js-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "youngdev build",
+    "dev": "youngdev dev",
+    "serve": "cd dist && serve"
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@young-design/keepalive": "^0.0.3",
+    "youngdev": "workspace:0.0.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router": "^6.4.5",
+    "react-router-dom": "^6.4.5"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "serve": "^13.0.2"
+  }
+}

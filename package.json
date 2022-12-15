@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "pnpm -r --filter ./packages/malita run build",
-    "dev": "pnpm -r --filter ./packages/malita --parallel run dev"
+    "dev:env": "pnpm -r --filter ./youngdev run dev",
+    "dev": "pnpm -r --filter ./app run dev"
   },
   "keywords": [],
   "author": "",
