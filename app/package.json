@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "youngdev build",
-    "dev": "youngdev dev",
-    "serve": "cd dist && serve"
+    "dev": "youngdev dev"
   },
   "keywords": [],
   "author": "",
