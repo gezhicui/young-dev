@@ -1,6 +1,6 @@
 # 什么是 young-dev
 
-一个学习用的**react 开发框架**,基于 esbuild 和 express 实现,通过命令行运行,实现 react 工程 hmr 热加载、用户自定义配置、前端 proxy 处理、约定式路由处理
+一个学习用的**react 开发框架**,基于 esbuild 和 express 实现,通过命令行运行,实现 react 工程热更新、用户自定义配置、前端 proxy 处理、约定式路由处理
 
 源码地址: [young-dev:一个学习用的 react 开发框架](https://github.com/gezhicui/young-dev)
 
@@ -14,7 +14,7 @@
 │  ├─young.config.ts （用户配置文件）
 ├─youngdev（youngdev开发框架文件夹）
 │  ├─bin （命令行工具,解析用户输入）
-│  ├─client （客户端socket,用于hmr）
+│  ├─client （客户端socket,用于热更新）
 │  ├─src （核心代码包）
 │  │  ├─appData.ts （获取前端工程项目路径信息）
 │  │  ├─build.ts （执行前端工程打包命令时的操作）
@@ -25,7 +25,7 @@
 │  │  ├─html.ts （生成前端工程html模板文件）
 │  │  ├─mock.ts （处理前端工程mock文件）
 │  │  ├─routes.ts （约定式路由处理文件）
-│  │  ├─server.ts （服务端socket,用于hmr）
+│  │  ├─server.ts （服务端socket,用于热更新）
 │  │  ├─style.ts （处理样式文件）
 ├─.gitignore（git忽略文件）
 ├─package.json（工程信息文件）
